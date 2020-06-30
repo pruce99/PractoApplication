@@ -1,0 +1,78 @@
+.Homepage {
+  display: flex;
+  justify-content: center;
+  .Homepage-container {
+    .practo-image {
+      .image {
+        width: 245px;
+        height: 160px;
+      }
+    }
+    .login-register {
+      display: flex;
+      justify-content: space-between;
+      .login {
+        border: 1px solid black;
+        display: flex;
+        justify-content: center;
+        height: 44px;
+        align-items: center;
+        width: 122px;
+        background: black;
+        color: white;
+        border-radius: 10px 0 0 10px;
+        cursor: pointer;
+      }
+      .register {
+        border: 1px solid black;
+        display: flex;
+        justify-content: center;
+        height: 44px;
+        align-items: center;
+        width: 122px;
+        background: white;
+        color: black;
+        border-radius: 0 10px 10px 0;
+        cursor: pointer;
+      }
+    }
+    .Login-page {
+      text-align: center;
+      .Login-page-components {
+        margin: 35px 0;
+      }
+      .login-button {
+        text-align: -webkit-center;
+        margin: 50px 0;
+
+        .login-button-btn {
+          border: 1px solid black;
+          border-radius: 75px;
+          width: 104px;
+          font-size: 17px;
+          height: 27px;
+          font-weight: 700;
+        }
+      }
+    }
+    .Register-page {
+      text-align: center;
+      .Register-page-components {
+        margin: 35px 0;
+      }
+      .register-button {
+        text-align: -webkit-center;
+        margin: 30px 0;
+
+        .register-button-btn {
+          border: 1px solid black;
+          border-radius: 75px;
+          width: 104px;
+          font-size: 17px;
+          height: 27px;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}

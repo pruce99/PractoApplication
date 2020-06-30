@@ -1,0 +1,53 @@
+.delete-Doctor {
+  .add-doctor-button {
+    text-align: -webkit-right;
+    padding: 10px;
+    margin: 30px 0;
+    .add-doctor-button-btn {
+      text-align: center;
+      border: 1px solid black;
+      border-radius: 75px;
+      width: 120px;
+      font-size: 17px;
+      height: 27px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+  }
+  .searchBox {
+    bottom: 100px;
+    left: 10px;
+    position: relative;
+    .searchStyle {
+      width: 300px;
+      height: 20px;
+    }
+  }
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    .doctor-list {
+      border: 1px solid black;
+      font-size: 18px;
+      border-radius: 10px;
+      align-items: center;
+      margin-bottom: 25px;
+      font-weight: 600;
+      opacity: 0.8;
+      width: 23%;
+      height: fit-content;
+      text-align: center;
+      .first-name {
+        .x-btn {
+          text-align: end;
+          span {
+            border: 1px solid black;
+            border-radius: 0 9px 0 0px;
+            font-weight: 900;
+          }
+        }
+      }
+    }
+  }
+}

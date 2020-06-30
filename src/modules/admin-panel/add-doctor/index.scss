@@ -1,0 +1,39 @@
+.Add-doctor {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  .Add-doctor-components {
+    margin: 25px 0;
+    width: 30%;
+    .selectme {
+      width: 183px;
+      height: 23px;
+    }
+    .add-doctor-button {
+      text-align: -webkit-center;
+      margin: 30px 0;
+
+      .add-doctor-button-btn {
+        border: 1px solid black;
+        border-radius: 75px;
+        width: 120px;
+        font-size: 17px;
+        height: 27px;
+        cursor: pointer;
+        font-weight: 700;
+      }
+    }
+    .timeslots {
+      display: flex;
+      flex-wrap: wrap;
+      .time-choose {
+        margin-left: 10px;
+        border: 1px solid black;
+        width: 15%;
+        margin-bottom: 8px;
+        cursor: pointer;
+      }
+    }
+  }
+}

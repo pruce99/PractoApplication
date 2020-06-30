@@ -1,0 +1,246 @@
+$maxLayoutWidth: 1200px;
+$sidePaddingPhone: 16px;
+$sidePaddingTablet: 24px;
+$sidePaddingLaptopDesktop: 32px;
+$header_borderBottomColor: #e6e1df;
+$header_linkFontSize: 16px;
+$header_linkGap: 35px;
+$header_linkPadding: 10px;
+$header_height: 65px;
+$header_heightScrolled: 48px;
+$header_textColor: #000000;
+$header_searchBar_height: 32px;
+$header_glyphSize: 11px;
+$header_glyphWrapperSize: 32px;
+$header_zIndex: 200;
+$detailsCardMinWidth: 260px;
+@mixin no-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+@mixin make-column($itemsPerRow, $space) {
+  @if $itemsPerRow==1 {
+    margin-left: unquote("calc(-1 * (#{$space} / 2))");
+    margin-right: unquote("calc(-1 * (#{$space} / 2))");
+    width: unquote("calc(100% + (2 * (#{$space} / 2)))");
+    & > * {
+      width: 100%;
+      margin-left: unquote("#{$space}");
+      margin-right: unquote("#{$space}");
+    }
+  } @else {
+    margin-left: unquote("calc(-1 * #{$space} / ((#{$itemsPerRow} - 1) * 2))");
+    margin-right: unquote("calc(-1 * #{$space} / ((#{$itemsPerRow} - 1) * 2))");
+    width: unquote("calc(100% + (2 * #{$space} / ((#{$itemsPerRow} - 1) * 2)))");
+    & > * {
+      width: unquote("calc(((100% - (2 * #{$space} / ((#{$itemsPerRow} - 1) * 2))) - #{$space}) / #{$itemsPerRow})");
+      margin-left: unquote("calc(#{$space} / ((#{$itemsPerRow} - 1) * 2))");
+      margin-right: unquote("calc(#{$space} / ((#{$itemsPerRow} - 1) * 2))");
+    }
+  }
+}
+@mixin notch-padding($padding) {
+  @supports (padding: unquote("max(0px)")) {
+    padding: unquote("max(#{$padding}, env(safe-area-inset-top))")
+      unquote("max(#{$padding}, env(safe-area-inset-right))") unquote("max(#{$padding}, env(safe-area-inset-bottom))")
+      unquote("max(#{$padding}, env(safe-area-inset-left))");
+  }
+  @supports not (padding: unquote("max(0px)")) {
+    padding: $padding;
+  }
+}
+@mixin notch-padding-sides-lr($padding) {
+  @supports (padding: unquote("max(0px)")) {
+    padding-left: unquote("max(#{$padding}, env(safe-area-inset-left))");
+    padding-right: unquote("max(#{$padding}, env(safe-area-inset-right))");
+  }
+  @supports not (padding: unquote("max(0px)")) {
+    padding-left: $padding;
+    padding-right: $padding;
+  }
+}
+@mixin responsive-notch-padding($padding-phone, $padding-tablet, $padding-laptop-desktop) {
+  @media screen and (max-width: 419px) {
+    @supports (padding: unquote("max(0px)")) {
+      padding: unquote("max(#{$padding-phone}, env(safe-area-inset-top))")
+        unquote("max(#{$padding-phone}, env(safe-area-inset-right))")
+        unquote("max(#{$padding-phone}, env(safe-area-inset-bottom))")
+        unquote("max(#{$padding-phone}, env(safe-area-inset-left))");
+    }
+    @supports not (padding: unquote("max(0px)")) {
+      padding: $padding-phone;
+    }
+  }
+  @media screen and (min-width: 420px) and (max-width: 767px) {
+    @supports (padding: unquote("max(0px)")) {
+      padding: unquote("max(#{$padding-tablet}, env(safe-area-inset-top))")
+        unquote("max(#{$padding-tablet}, env(safe-area-inset-right))")
+        unquote("max(#{$padding-tablet}, env(safe-area-inset-bottom))")
+        unquote("max(#{$padding-tablet}, env(safe-area-inset-left))");
+    }
+    @supports not (padding: unquote("max(0px)")) {
+      padding: $padding-tablet;
+    }
+  }
+  @media screen and (min-width: 768px) {
+    @supports (padding: unquote("max(0px)")) {
+      padding: unquote("max(#{$padding-laptop-desktop}, env(safe-area-inset-top))")
+        unquote("max(#{$padding-laptop-desktop}, env(safe-area-inset-right))")
+        unquote("max(#{$padding-laptop-desktop}, env(safe-area-inset-bottom))")
+        unquote("max(#{$padding-laptop-desktop}, env(safe-area-inset-left))");
+    }
+    @supports not (padding: unquote("max(0px)")) {
+      padding: $padding-laptop-desktop;
+    }
+  }
+}
+@mixin responsive-margin($margin-phone, $margin-tablet, $margin-laptop-desktop) {
+  @media screen and (max-width: 419px) {
+    margin-left: $margin-phone;
+    margin-right: $margin-phone;
+  }
+  @media screen and (min-width: 420px) and (max-width: 767px) {
+    margin-left: $margin-tablet;
+    margin-right: $margin-tablet;
+  }
+  @media screen and (min-width: 768px) {
+    margin-left: $margin-laptop-desktop;
+    margin-right: $margin-laptop-desktop;
+  }
+}
+@mixin polyfill-overflow-padding($padding-phone, $padding-tablet, $padding-laptop-desktop) {
+  @media screen and (max-width: 419px) {
+    padding-left: $padding-phone;
+    padding-right: $padding-phone;
+  }
+  @media screen and (min-width: 420px) and (max-width: 767px) {
+    padding-left: $padding-tablet;
+    padding-right: $padding-tablet;
+  }
+  @media screen and (min-width: 768px) {
+    padding-left: $padding-laptop-desktop;
+    padding-right: $padding-laptop-desktop;
+  }
+}
+@mixin responsive-padding-sides-lr($padding-phone, $padding-tablet, $padding-laptop-desktop) {
+  @media screen and (max-width: 419px) {
+    @include notch-padding-sides-lr($padding-phone);
+  }
+  @media screen and (min-width: 420px) and (max-width: 767px) {
+    @include notch-padding-sides-lr($padding-tablet);
+  }
+  @media screen and (min-width: 768px) {
+    @include notch-padding-sides-lr($padding-laptop-desktop);
+  }
+}
+@mixin extend-responsive-carousel-container-width($padding-phone, $padding-tablet, $padding-laptop-desktop) {
+  @media screen and (max-width: 419px) {
+    width: 100vw !important;
+    @supports (padding: unquote("min(0px)")) {
+      max-width: unquote(
+        "calc(100% + max(#{$padding-phone}, env(safe-area-inset-left)) + max(#{$padding-phone}, env(safe-area-inset-right)))"
+      );
+    }
+    @supports not (padding: unquote("min(0px)")) {
+      max-width: unquote("calc(100% + (2 * #{$padding-phone}))");
+    }
+  }
+  @media screen and (min-width: 420px) and (max-width: 767px) {
+    width: 100vw !important;
+    @supports (padding: unquote("min(0px)")) {
+      max-width: unquote(
+        "calc(100% + max(#{$padding-tablet}, env(safe-area-inset-left)) + max(#{$padding-tablet}, env(safe-area-inset-right)))"
+      );
+    }
+    @supports not (padding: unquote("min(0px)")) {
+      max-width: unquote("calc(100% + (2 * #{$padding-tablet}))");
+    }
+  }
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    width: 100vw !important;
+    @supports (padding: unquote("min(0px)")) {
+      max-width: unquote(
+        "calc(100% + max(#{$padding-laptop-desktop}, env(safe-area-inset-left)) + max(#{$padding-laptop-desktop}, env(safe-area-inset-right)))"
+      );
+    }
+    @supports not (padding: unquote("min(0px)")) {
+      max-width: unquote("calc(100% + (2 * #{$padding-laptop-desktop}))");
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    max-width: $maxLayoutWidth;
+    width: 100%;
+  }
+}
+@mixin responsive-carousel-container-notch-margin-left($padding-phone, $padding-tablet, $padding-laptop-desktop) {
+  @media screen and (max-width: 419px) {
+    @supports (padding: unquote("max(0px)")) {
+      margin-left: unquote("min(#{$padding-phone}, calc(-1 * env(safe-area-inset-left)))");
+    }
+    @supports not (padding: unquote("max(0px)")) {
+      margin-left: $padding-phone;
+    }
+  }
+  @media screen and (min-width: 420px) and (max-width: 767px) {
+    @supports (padding: unquote("max(0px)")) {
+      margin-left: unquote("min(#{$padding-tablet}, calc(-1 * env(safe-area-inset-left)))");
+    }
+    @supports not (padding: unquote("max(0px)")) {
+      margin-left: $padding-tablet;
+    }
+  }
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    @supports (padding: unquote("max(0px)")) {
+      margin-left: unquote("min(#{$padding-laptop-desktop}, calc(-1 * env(safe-area-inset-left)))");
+    }
+    @supports not (padding: unquote("max(0px)")) {
+      margin-left: $padding-laptop-desktop;
+    }
+  }
+}
+@mixin responsive-carousel-first-content-notch-margin-left($padding-phone, $padding-tablet, $padding-laptop-desktop) {
+  @media screen and (max-width: 419px) {
+    @supports (padding: unquote("max(0px)")) {
+      margin-left: unquote("max(#{$padding-phone}, env(safe-area-inset-left))");
+    }
+    @supports not (padding: unquote("max(0px)")) {
+      margin-left: $padding-phone;
+    }
+  }
+  @media screen and (min-width: 420px) and (max-width: 767px) {
+    @supports (padding: unquote("max(0px)")) {
+      margin-left: unquote("max(#{$padding-tablet}, env(safe-area-inset-left))");
+    }
+    @supports not (padding: unquote("max(0px)")) {
+      margin-left: $padding-tablet;
+    }
+  }
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    @supports (padding: unquote("max(0px)")) {
+      margin-left: unquote("max(#{$padding-laptop-desktop}, env(safe-area-inset-left))");
+    }
+    @supports not (padding: unquote("max(0px)")) {
+      margin-left: $padding-laptop-desktop;
+    }
+  }
+}
+@mixin carousel-container-notch-margin-left($padding) {
+  @supports (padding: unquote("min(0px)")) {
+    margin-left: unquote("min(#{$padding}, calc(-1 * env(safe-area-inset-left)))");
+  }
+  @supports not (padding: unquote("min(0px)")) {
+    margin-left: $padding;
+  }
+}
+@mixin carousel-first-content-notch-margin-left($padding) {
+  @supports (padding: unquote("max(0px)")) {
+    margin-left: unquote("max(#{$padding}, env(safe-area-inset-left))");
+  }
+  @supports not (padding: unquote("max(0px)")) {
+    margin-left: $padding;
+  }
+}

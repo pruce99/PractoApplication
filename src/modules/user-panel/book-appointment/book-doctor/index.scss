@@ -1,0 +1,66 @@
+.book-doctor {
+  .add-doctor-button {
+    text-align: -webkit-right;
+    margin: 30px 0;
+    .add-doctor-button-btn {
+      text-align: center;
+      border: 1px solid black;
+      border-radius: 75px;
+      width: 120px;
+      font-size: 17px;
+      height: 27px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+  }
+  .book-doctor-button {
+    text-align: -webkit-left;
+    margin: 30px 0;
+    .add-doctor-button-btn {
+      text-align: center;
+      border: 1px solid black;
+      border-radius: 75px;
+      width: 211px;
+      font-size: 17px;
+      height: 28px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+  }
+  .list {
+    border: 1px solid black;
+    font-size: 18px;
+    border-radius: 10px;
+    align-items: center;
+    margin-bottom: 25px;
+    font-weight: 600;
+    opacity: 0.8;
+    width: 23%;
+    height: fit-content;
+    text-align: center;
+  }
+  .time {
+    margin-left: 10px;
+    border: 1px solid black;
+    width: 15%;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    .close-btn{
+        border: 1px solid black;
+        font-weight: 800;
+        cursor: pointer;
+    }
+  }
+  .timeslots {
+    display: flex;
+    flex-wrap: wrap;
+    .time-choose {
+      margin-left: 10px;
+      border: 1px solid black;
+      width: 15%;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+  }
+}
